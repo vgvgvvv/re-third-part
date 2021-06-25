@@ -7,7 +7,7 @@ include(FetchContent)
 FetchContent_Declare(
   re-cmake
   GIT_REPOSITORY https://github.com/vgvgvvv/re-cmake
-  GIT_TAG        "test-1.0"
+  GIT_TAG        "test-1.1"
 )
 FetchContent_MakeAvailable(re-cmake)
 
@@ -20,5 +20,14 @@ ReMake_InitProject()
 
 include(third-part.cmake)
 UseThirdPart()
+
+function(IsRootProject Result)
+    if(${REMAKE_ROOT_PATH} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
+        set(${Result} TRUE PARENT_SCOPE)
+    else()
+        set(${Result} FALSE PARENT_SCOPE)
+    endif()
+endfunction()
+
 
 ReMake_AddSubDirsRec(src)
