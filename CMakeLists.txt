@@ -21,13 +21,4 @@ ReMake_InitProject()
 include(third-part.cmake)
 UseThirdPart()
 
-function(IsRootProject Result)
-    if(${REMAKE_ROOT_PATH} STREQUAL ${CMAKE_CURRENT_SOURCE_DIR})
-        set(${Result} TRUE PARENT_SCOPE)
-    else()
-        set(${Result} FALSE PARENT_SCOPE)
-    endif()
-endfunction()
-
-
 ReMake_AddSubDirsRec(src)
