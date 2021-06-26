@@ -1,6 +1,4 @@
 
-ReMake_ShowIncludeFileName()
-
 function(UseGlad targetName)
 
 	message(STATUS "${targetName}  include ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/include")
