@@ -11,3 +11,4 @@ ReMake_AddTarget(
 USEGLAD(${targetName})
 USEGLEW(${targetName})
 USEGLFW(${targetName})
+USEFMT(${targetName})
