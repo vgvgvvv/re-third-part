@@ -11,4 +11,4 @@ ReMake_AddTarget(
 USEGLAD(${targetName})
 USEGLFW(${targetName})
 USEFMT(${targetName})
-USEIMGUI(${targetName} Glfw)
+USEIMGUIWITHDOCK(${targetName} Glfw)
