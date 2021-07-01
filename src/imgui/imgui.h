@@ -241,7 +241,7 @@ typedef unsigned long long  ImU64;  // 64-bit unsigned integer (post C++11)
 
 // 2D vector (often used to store positions or sizes)
 IM_MSVC_RUNTIME_CHECKS_OFF
-struct ImVec2
+struct IMGUI_API ImVec2
 {
     float                                   x, y;
     ImVec2()                                { x = y = 0.0f; }
@@ -254,7 +254,7 @@ struct ImVec2
 };
 
 // 4D vector (often used to store floating-point colors)
-struct ImVec4
+struct IMGUI_API ImVec4
 {
     float                                           x, y, z, w;
     ImVec4()                                        { x = y = z = w = 0.0f; }

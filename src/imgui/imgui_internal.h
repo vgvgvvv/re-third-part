@@ -449,7 +449,7 @@ IMGUI_API ImGuiDir   ImGetDirQuadrantFromDelta(float dx, float dy);
 // Helper: ImVec1 (1D vector)
 // (this odd construct is used to facilitate the transition between 1D and 2D, and the maintenance of some branches/patches)
 IM_MSVC_RUNTIME_CHECKS_OFF
-struct ImVec1
+struct IMGUI_API ImVec1
 {
     float   x;
     ImVec1()         { x = 0.0f; }
@@ -457,7 +457,7 @@ struct ImVec1
 };
 
 // Helper: ImVec2ih (2D vector, half-size integer, for long-term packed storage)
-struct ImVec2ih
+struct IMGUI_API ImVec2ih
 {
     short   x, y;
     ImVec2ih()                           { x = y = 0; }
