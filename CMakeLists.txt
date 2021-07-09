@@ -22,3 +22,4 @@ include(third-part.cmake)
 UseThirdPart()
 
 ReMake_AddSubDirsRec(src)
+ReMake_AddSubDirsRec(test)
