@@ -1,7 +1,7 @@
 
-message(STATUS "include test")
+message(STATUS "include test_opengl")
 
-set(targetName Test)
+set(targetName TestOpenGL)
 ReMake_AddTarget(
 	TARGET_NAME ${targetName}
 	MODE EXE
