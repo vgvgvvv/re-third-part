@@ -6,6 +6,6 @@ function(UseGlew targetName)
 
 	message(STATUS "${targetName} link ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/Release/x64")
 	target_link_directories(${targetName} PUBLIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/Release/x64")
-	target_link_libraries(${targetName} PUBLIC glew32)
+	target_link_libraries(${targetName} PUBLIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/Release/x64/glew32.lib")
 
 endfunction()
