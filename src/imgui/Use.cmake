@@ -14,6 +14,7 @@ function(UseImgui targetName backend)
 		"${CMAKE_CURRENT_FUNCTION_LIST_DIR}/imgui_tables.cpp"
 		"${CMAKE_CURRENT_FUNCTION_LIST_DIR}/imgui_widgets.cpp"
 		"${CMAKE_CURRENT_FUNCTION_LIST_DIR}/ImGuiFileDialog.cpp"
+		"${CMAKE_CURRENT_FUNCTION_LIST_DIR}/imgui_stdlib.cpp"
 		)
 
 endfunction()
