@@ -8,7 +8,7 @@ function(UseAssimp targetName)
 	target_link_directories(${targetName} PUBLIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/")
 	target_link_libraries(${targetName} PUBLIC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/assimp-vc142-mt.lib")
 
-	add_definitions(-DASSIMP_DLL)
+	target_compile_definitions(${targetName} PUBLIC ASSIMP_DLL)
 
 	add_custom_command(TARGET ${targetName} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different  
