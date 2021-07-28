@@ -103,7 +103,9 @@ inline aiReturn aiMaterial::Get(const char* pKey,unsigned int type,
             return AI_FAILURE;
         }
 
-        iNum = std::min((size_t)iNum,prop->mDataLength / sizeof(Type));
+        // error C2589: “(”: “::”右边的非法标记
+        //  https://blog.csdn.net/u013925378/article/details/84402108
+        iNum = (std::min)((size_t)iNum,prop->mDataLength / sizeof(Type));
         ::memcpy(pOut,prop->mData,iNum * sizeof(Type));
         if (pMax) {
             *pMax = iNum;
