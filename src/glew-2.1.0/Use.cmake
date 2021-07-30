@@ -12,6 +12,9 @@ function(UseGlew targetName)
 		LIB "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/Release/x64/glew32.lib"
 	)
 
-	ReMake_CopyDllToTarget(${targetName} "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bin/Release/x64/glew32.dll")
+	add_custom_command(TARGET ${targetName} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different  
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bin/Release/x64/glew32.dll"
+        $<TARGET_FILE_DIR:${targetName}>)
 
 endfunction()

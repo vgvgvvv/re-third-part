@@ -13,6 +13,10 @@ function(UseAssimp targetName)
 		DEFINE ASSIMP_DLL
 	)
 
-	ReMake_CopyDllToTarget(${targetName} "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/assimp-vc142-mt.dll")
+	add_custom_command(TARGET ${targetName} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different  
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/assimp-vc142-mt.dll"
+        $<TARGET_FILE_DIR:${targetName}>)
+
 
 endfunction()

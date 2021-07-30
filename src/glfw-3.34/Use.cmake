@@ -12,6 +12,9 @@ function(UseGlfw targetName)
 		LIB "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib-vc2019/glfw3.lib"
 	)
 
-	ReMake_CopyDllToTarget(${targetName} "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/glfw3.dll")
+	add_custom_command(TARGET ${targetName} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different  
+        "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib-vc2019/glfw3.dll"
+        $<TARGET_FILE_DIR:${targetName}>)
 
 endfunction()

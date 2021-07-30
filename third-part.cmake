@@ -15,15 +15,6 @@ function(ReMake_UseThirdPart)
 	endforeach()
 endfunction()
 
-macro(ReMake_CopyDllToTarget targetName dllLocation)
-
-    add_custom_command(TARGET ${targetName} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different  
-        "${DllLocation}"
-        $<TARGET_FILE_DIR:${targetName}>)
-
-endmacro()
-
 function(ReMake_StartUse)
 
     if("${ReMake_HasStartUse}" STREQUAL "TRUE")
