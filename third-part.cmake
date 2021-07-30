@@ -24,8 +24,41 @@ macro(ReMake_CopyDllToTarget targetName dllLocation)
 
 endmacro()
 
+function(ReMake_StartUse)
+
+    if("${ReMake_HasStartUse}" STREQUAL "TRUE")
+        message(FATAL_ERROR "you should end use first")
+    endif()
+
+    set(ReMake_HasStartUse TRUE PARENT_SCOPE)
+    set(ReMake_CustomModuleList "" PARENT_SCOPE)
+
+endfunction()
+
+function(ReMake_EndUse)
+
+    if("${ReMake_HasStartUse}" STREQUAL "FALSE")
+        message(FATAL_ERROR "you should start use first")
+    endif()
+
+    set(ReMake_HasStartUse FALSE PARENT_SCOPE)
+    
+    message(STATUS "ReMake_CustomModuleList ${ReMake_CustomModuleList}")
+
+    set(ModuleListFileListFile "")
+    set(FileLocation "${CMAKE_CURRENT_LIST_DIR}/CustomModuleList.txt")
+    foreach(item ${ReMake_CustomModuleList})
+        string(APPEND ModuleListFileListFile "${item}\n")
+    endforeach()
+
+    file(WRITE ${FileLocation} ${ModuleListFileListFile})
+
+    set(ReMake_CustomModuleList "" PARENT_SCOPE)
+endfunction()
+
 macro(ReMake_AddCustomModule)
 
+  
     message(STATUS "----------")
     message(STATUS "Add Custom Module")
 
@@ -68,6 +101,11 @@ macro(ReMake_AddCustomModule)
 
     set(targetName ${ARG_TARGET_NAME})
     set(moduleName ${ARG_MODULE_NAME})
+
+      if(NOT "${ReMake_HasStartUse}" STREQUAL "TRUE")
+        message(FATAL_ERROR " - target: ${targetName} \n - module : ${moduleName} \n - you should start use first")
+    endif()
+
 
     ReMake_ExpandSources(sources_public ARG_SOURCE_PUBLIC)
     ReMake_ExpandSources(sources_interface ARG_SOURCE_INTERFACE)
@@ -186,5 +224,10 @@ macro(ReMake_AddCustomModule)
     message(STATUS "Write to ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/${moduleName}.CustomModule.json")
 
     message(STATUS "----------")
+
+    set(CustomModuleFile "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/${moduleName}.CustomModule.json")
+    set(ModuleList ${ReMake_CustomModuleList})
+    list(APPEND ModuleList ${CustomModuleFile})
+    set(ReMake_CustomModuleList ${ModuleList} PARENT_SCOPE)
 
 endmacro()

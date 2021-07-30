@@ -5,3 +5,4 @@
 module_info.json
 *.CustomModule.json
 *.Target.json
+CustomModuleList.txt

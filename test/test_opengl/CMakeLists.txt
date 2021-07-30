@@ -8,7 +8,9 @@ ReMake_AddTarget(
 	LIB opengl32
 )
 
+REMAKE_STARTUSE()
 USEGLAD(${targetName})
 USEGLFW(${targetName})
 USEFMT(${targetName})
 USEIMGUIWITHDOCK(${targetName} Glfw)
+REMAKE_ENDUSE()
