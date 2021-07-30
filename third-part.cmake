@@ -48,7 +48,7 @@ function(ReMake_EndUse)
     set(ModuleListFileListFile "")
     set(FileLocation "${CMAKE_CURRENT_LIST_DIR}/CustomModuleList.txt")
     foreach(item ${ReMake_CustomModuleList})
-        string(APPEND ModuleListFileListFile "${item}\n")
+        string(APPEND ModuleListFileListFile "${item}")
     endforeach()
 
     file(WRITE ${FileLocation} ${ModuleListFileListFile})
@@ -227,7 +227,7 @@ macro(ReMake_AddCustomModule)
 
     set(CustomModuleFile "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/${moduleName}.CustomModule.json")
     set(ModuleList ${ReMake_CustomModuleList})
-    list(APPEND ModuleList ${CustomModuleFile})
+    list(APPEND ModuleList "${targetName}=>${CustomModuleFile}\n")
     set(ReMake_CustomModuleList ${ModuleList} PARENT_SCOPE)
 
 endmacro()
