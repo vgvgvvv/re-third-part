@@ -82,6 +82,9 @@ macro(ReMake_AddCustomModule)
         L_OPTION_PRIVATE 
         PCH)
 
+    list(APPEND arglist
+        ADD_OPTIONS)
+
     cmake_parse_arguments(
         "ARG"
         "TEST"
@@ -217,7 +220,11 @@ macro(ReMake_AddCustomModule)
     Json_ListToJsonString(ARG_DEFINE_INTERFACE TempList)
     string(APPEND TargetArgs "  \"interface_define\" : ${TempList},\n" )
     Json_ListToJsonString(ARG_DEFINE_PRIVATE TempList)
-    string(APPEND TargetArgs "  \"private_define\" : ${TempList}\n" )
+    string(APPEND TargetArgs "  \"private_define\" : ${TempList},\n" )
+
+    
+    Json_ListToJsonString(ARG_ADD_OPTIONS TempList)
+    string(APPEND TargetArgs "  \"add_options\" : ${TempList}\n" )
 
     string(APPEND TargetArgs "}\n")
 
