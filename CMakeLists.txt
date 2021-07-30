@@ -19,7 +19,7 @@ include(Init)
 ReMake_InitProject()
 
 include(third-part.cmake)
-UseThirdPart()
+ReMake_UseThirdPart()
 
 ReMake_AddSubDirsRec(src)
 ReMake_AddSubDirsRec(test)
