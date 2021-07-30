@@ -12,6 +12,6 @@ function(UseGlew targetName)
 		LIB "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib/Release/x64/glew32.lib"
 	)
 
-	ReMake_CopyDllToTarget(${targate} "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bin/Release/x64/glew32.dll")
+	ReMake_CopyDllToTarget(${targetName} "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/bin/Release/x64/glew32.dll")
 
 endfunction()
