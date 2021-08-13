@@ -20,7 +20,7 @@ macro(Gml_UseFastMath ENABLE)
 	set(GLM_TEST_ENABLE_FAST_MATH ${ENABLE})
 endmacro()
 
-macro(UseGml)
+macro(UseGml targetName)
 
 	message(STATUS "${targetName}  include ${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
 
