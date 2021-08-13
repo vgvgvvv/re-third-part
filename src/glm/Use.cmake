@@ -90,7 +90,7 @@ macro(UseGml)
 	ReMake_AddCustomModule(
 		TARGET_NAME ${targetName}
 		MODULE_NAME ${moduleName}
-		INC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}/gml"
+		INC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}"
 	)
 
 endmacro()
