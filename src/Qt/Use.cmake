@@ -1,8 +1,10 @@
 
+macro(UseQt)
+    set(QtVersion 6)
+    set(CMAKE_AUTOMOC ON)
+endmacro()
 
 macro(FindQtComponent ComponentName)
-
-    set(QtVersion 6)
 
     #See if the environment var is set
     if(DEFINED ENV{Qt${QtVersion}_HOME})
