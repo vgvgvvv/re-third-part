@@ -1,17 +1,13 @@
 
 function(UseTaskflow targetName)
 
-	CpmAddPackage(
-		NAME taskflow 
-		GITHUB_REPOSITORY "taskflow/taskflow"
-		GIT_TAG v3.3.0
-	)
+	message(STATUS "${targetName}  include ${CMAKE_CURRENT_FUNCTION_LIST_DIR}")
 
 	set(moduleName taskflow)
 	ReMake_AddCustomModule(
 		TARGET_NAME ${targetName}
 		MODULE_NAME ${moduleName}
-		LIB tf::default_settings 
+		INC "${CMAKE_CURRENT_FUNCTION_LIST_DIR}"
 	)
 
 endfunction()
